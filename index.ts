@@ -8,11 +8,11 @@ import postRoutes from "./routes/posts";
 dotenv.config();
 const app = express();
 
-app.use("/posts", postRoutes);
-
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(bodyParser.json({ limit: "30mb" }));
 app.use(cors());
+
+app.use("/posts", postRoutes);
 
 const CONNECTION_URL = `mongodb+srv://${process.env.CONNECTION_USER}:${process.env.CONNECTION_PASS}@cluster0.bmscu.mongodb.net/test`;
 const PORT = process.env.PORT || 5000;
